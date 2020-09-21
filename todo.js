@@ -7,30 +7,20 @@ function getId() {
   id++;
   return id;
 }
-function addTodo(newTodo) {
+function addTodo(todos, newTodo) {
   const todo = {
-    text,
+    text: newTodo.text,
     checked: false,
-    id: Date.now(),
+    id: getId(),
   };
-  todoItems.push(todo);
-  console.log(todoItems);
+  return [...todos, todo];
 }
-function deleteTodo(key) {
-  const index = todoItems.findIndex((item) => item.id === Number(key));
-  const todo = {
-    deleted: true,
-    ...todoItems[index],
-  };
-  todoItems = todoItems.filter((item) => item.id !== Number(key));
-  renderTodo(todo);
+function deleteTodo(todos, id) {
+  return todos.filter((item) => item.id !== id);
 }
-function changeStatus(itemid, checked) {
-  todo[itemid].status = checked;
-  const index = todoItems.findIndex((item) => item.id === Number(key));
- if (index === -1) {
-  throw new Error("Id not found");
-todos[index].status = isComplete;
+
+function changeStatus(todos, itemId, checked) {
+   return todos.map((todo) => todo.id === itemId ? {...todo, checked} : todo);
 };
 
 function changeTodoTitle(itemid, text) {
